@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  postgres:
+    image: "postgres"
+    container_name: postgres
+    restart: "always"
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: emre
+      POSTGRES_DB: student
+    volumes:
+      - type: bind
+        source: ./init.sql
+        target: /docker-entrypoint-initdb.d/10-init.sql
+  spring-boot:
+    build: .
+    container_name: spring-boot
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
