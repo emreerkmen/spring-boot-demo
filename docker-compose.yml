@@ -14,8 +14,10 @@ services:
       - type: bind
         source: ./init.sql
         target: /docker-entrypoint-initdb.d/10-init.sql
-  spring-boot:
-    build: .
+  demo:
+    image: "emre_spring-boot"
+    build:
+      context: .
     container_name: spring-boot
     ports:
       - "8080:8080"
