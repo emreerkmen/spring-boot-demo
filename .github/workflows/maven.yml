@@ -16,6 +16,19 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Setup PostgreSQL With Init Scripts
+      # You may pin to the exact commit or the version.
+      # uses: m4nu56/postgresql-action@53809a8ffb454e0bb257840368384efd5c711a34
+      uses: m4nu56/postgresql-action@1.0
+      with:
+        postgresql db: student
+        # POSTGRES_USER - create the specified user with superuser power
+        postgresql user: emre 
+        # POSTGRES_PASSWORD - superuser password
+        postgresql password: 123456 
+        # POSTGRES_INIT_SCRIPTS - directory containing DB init scripts
+        postgresql init scripts: ./init.sql 
+    
     - uses: actions/checkout@v2
     - name: Set up JDK 15
       uses: actions/setup-java@v1
