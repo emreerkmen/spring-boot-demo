@@ -17,7 +17,7 @@ public class StudentConfig {
     CommandLineRunner commandLineRunner(StudentRepository repository){
         return args -> {
             Student emre = new Student(
-                    "Emre",
+                    "Emre Test",
                     "emre.erkmen@hotmail.com",
                     LocalDate.of(2000, JANUARY, 5)
             );
